@@ -16,3 +16,8 @@ cd LMS-FRONT-END
 ```
 npm i 
 ```
+
+4.Run the server
+```
+npm run dev
+```
