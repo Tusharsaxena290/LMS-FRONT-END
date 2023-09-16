@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require(getDaisyUi())],
+  plugins: [require(getDaisyUi()),require('@tailwindcss/line-clamp')],
 }
 
 function getDaisyUi(){
