@@ -61,6 +61,7 @@ function HomeLayout({ children }) {
           <ul
             className="menu p-4 w-48 sm:w-80
                 bg-base-100 text-base-content relative
+                h-[100%]
                 "
           >
             <li
@@ -96,7 +97,7 @@ function HomeLayout({ children }) {
             </li>
             {/* IF NOT LOGGED-IN */}
             {!isLoggedIn && (
-              <li className="absolute bottom-4 w-90%">
+              <li className="absolute bottom-4 w-[90%]">
                 <div className="flex w-full items-center justify-center">
                   <button className=" relative btn-primary px-4 py-1 w-full font-semibold rounded-md">
                     <Link to="/login">Login</Link>
@@ -112,7 +113,7 @@ function HomeLayout({ children }) {
 
             {/* IF LOGGED-IN */}
             {isLoggedIn && (
-              <li className="absolute bottom-4 w-90%">
+              <li className="absolute bottom-4 w-[90%]">
                 <div className="flex w-full items-center justify-center">
                   <button className=" relative btn-primary px-4 py-1 w-full font-semibold rounded-md">
                     <Link to="/profile">Profile</Link>
