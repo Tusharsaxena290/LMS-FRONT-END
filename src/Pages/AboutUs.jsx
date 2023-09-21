@@ -40,75 +40,111 @@ function AboutUs() {
             />
           </div>
         </div>
-        <div className="carousel w-full">
+        <div className="carousel w-1/2 my-16 m-auto">
           <div id="slide1" className="carousel-item relative w-full">
-            <img
-              src={apj}
-              className="w-full"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide4" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide2" className="btn btn-circle">
-                ❯
-              </a>
+
+            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
+              <img src={apj} className="w-40 rounded-full border-gry-400" />
+
+              <p className="text-xl font-semibold text-gray-200">
+                Education is the most powerful tool.
+              </p>
+
+              <h3 className="text-2xl">APJ ABDUL KALAM</h3>
+
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href="#slide5" className="btn btn-circle">
+                  ❮
+                </a>
+                <a href="#slide2" className="btn btn-circle">
+                  ❯
+                </a>
+              </div>
+
             </div>
           </div>
+
           <div id="slide2" className="carousel-item relative w-full">
-            <img
-              src={einstein}
-              className="w-full"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide1" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide3" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
+              <img
+                src={nelsonMandela}
+                className="w-40 rounded-full border-gry-400"
+              />
+              <p className="text-xl font-semibold text-gray-200">
+                Education is the most powerful tool.
+              </p>
+              <h3 className="text-2xl">NELSON MANDELA</h3>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href="#slide1" className="btn btn-circle">
+                  ❮
+                </a>
+                <a href="#slide3" className="btn btn-circle">
+                  ❯
+                </a>
+              </div>
             </div>
           </div>
+
           <div id="slide3" className="carousel-item relative w-full">
-            <img
-              src={billGates}
-              className="w-full"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide2" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide4" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
+              <img
+                src={steveJobs}
+                className="w-40 rounded-full border-gry-400"
+              />
+              <p className="text-xl font-semibold text-gray-200">
+                Education is the most powerful tool.
+              </p>
+              <h3 className="text-2xl">STEVE JOBS</h3>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href="#slide2" className="btn btn-circle">
+                  ❮
+                </a>
+                <a href="#slide4" className="btn btn-circle">
+                  ❯
+                </a>
+              </div>
             </div>
           </div>
+
           <div id="slide4" className="carousel-item relative w-full">
-            <img
-              src={steveJobs}
-              className="w-full"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide3" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide1" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
+              <img
+                src={billGates}
+                className="w-40 rounded-full border-gry-400"
+              />
+              <p className="text-xl font-semibold text-gray-200">
+                Education is the most powerful tool.
+              </p>
+              <h3 className="text-2xl">BILL GATES</h3>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href="#slide3" className="btn btn-circle">
+                  ❮
+                </a>
+                <a href="#slide5" className="btn btn-circle">
+                  ❯
+                </a>
+              </div>
             </div>
           </div>
+
           <div id="slide5" className="carousel-item relative w-full">
-            <img
-              src={nelsonMandela}
-              className="w-full"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide3" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide1" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
+              <img
+                src={einstein}
+                className="w-40 rounded-full border-gry-400"
+              />
+              <p className="text-xl font-semibold text-gray-200">
+                Education is the most powerful tool.
+              </p>
+              <h3 className="text-2xl">ALBERT EINSTEIN</h3>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a href="#slide4" className="btn btn-circle">
+                  ❮
+                </a>
+                <a href="#slide1" className="btn btn-circle">
+                  ❯
+                </a>
+              </div>
             </div>
           </div>
         </div>
