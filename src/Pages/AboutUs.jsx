@@ -1,6 +1,7 @@
 import React from "react";
 import HomeLayout from "../Layouts/HomeLayout";
 import aboutMainImg from "../assets/images/aboutMainImage.png";
+import CarouselSlide from "../Components/CarouselSlide";
 
 //character-img-imports
 
@@ -10,7 +11,52 @@ import billGates from "../assets/images/billGates.png";
 import einstein from "../assets/images/einstein.png";
 import apj from "../assets/images/apj.png";
 
+
 function AboutUs() {
+  const celebs = [
+    {
+      title: "APJ ABDUL KALAM",
+      description:
+        "Education is the most powerful tool that can be used by the mankind.",
+      image: apj,
+      slideNumber: 1,
+    },
+
+    {
+      title: "NELSON MANDELA",
+      description:
+        "Education is the most powerful tool that can be used by the mankind.",
+      image: nelsonMandela,
+      slideNumber: 2,
+    },
+
+    {
+      title: "STEVE JOBS",
+      description:
+        "Education is the most powerful tool that can be used by the mankind.",
+      image: steveJobs,
+      slideNumber: 3,
+    },
+
+    {
+      title: "BILL GATES",
+      description:
+        "Education is the most powerful tool that can be used by the mankind.",
+      image: billGates,
+      slideNumber: 4,
+    },
+
+    {
+      title: "ALBERT EINSTEIN",
+      description:
+        "Education is the most powerful tool that can be used by the mankind.",
+      image: einstein,
+      slideNumber: 5,
+    },
+  ];
+
+
+
   return (
     <HomeLayout>
       <div className="pl-20 pt-20 flex flex-col text-white">
@@ -41,112 +87,21 @@ function AboutUs() {
           </div>
         </div>
         <div className="carousel w-1/2 my-16 m-auto">
-          <div id="slide1" className="carousel-item relative w-full">
-
-            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
-              <img src={apj} className="w-40 rounded-full border-gry-400" />
-
-              <p className="text-xl font-semibold text-gray-200">
-                Education is the most powerful tool.
-              </p>
-
-              <h3 className="text-2xl">APJ ABDUL KALAM</h3>
-
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide5" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide2" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-          <div id="slide2" className="carousel-item relative w-full">
-            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
-              <img
-                src={nelsonMandela}
-                className="w-40 rounded-full border-gry-400"
-              />
-              <p className="text-xl font-semibold text-gray-200">
-                Education is the most powerful tool.
-              </p>
-              <h3 className="text-2xl">NELSON MANDELA</h3>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide1" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide3" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div id="slide3" className="carousel-item relative w-full">
-            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
-              <img
-                src={steveJobs}
-                className="w-40 rounded-full border-gry-400"
-              />
-              <p className="text-xl font-semibold text-gray-200">
-                Education is the most powerful tool.
-              </p>
-              <h3 className="text-2xl">STEVE JOBS</h3>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide2" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide4" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div id="slide4" className="carousel-item relative w-full">
-            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
-              <img
-                src={billGates}
-                className="w-40 rounded-full border-gry-400"
-              />
-              <p className="text-xl font-semibold text-gray-200">
-                Education is the most powerful tool.
-              </p>
-              <h3 className="text-2xl">BILL GATES</h3>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide3" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide5" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div id="slide5" className="carousel-item relative w-full">
-            <div className="flex items-center justify-center flex-col gap-4 px-[15%]">
-              <img
-                src={einstein}
-                className="w-40 rounded-full border-gry-400"
-              />
-              <p className="text-xl font-semibold text-gray-200">
-                Education is the most powerful tool.
-              </p>
-              <h3 className="text-2xl">ALBERT EINSTEIN</h3>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide4" className="btn btn-circle">
-                  ❮
-                </a>
-                <a href="#slide1" className="btn btn-circle">
-                  ❯
-                </a>
-              </div>
-            </div>
-          </div>
+            {
+                // celebs.forEach((c)=>(
+                //     // <CarouselSlide title={c.title} description={c.description} image={c.image}
+                //     // slideNumber={c.slideNumber} totalSlides={celebs.length}
+                //     // />
+                //     console.log(c)
+                // ))
+                celebs.map((c)=>{
+                    return(
+                        <CarouselSlide title={c.title} description={c.description} image={c.image}
+                        slideNumber={c.slideNumber} totalSlides={celebs.length}
+                        />
+                    )
+                })
+            }
         </div>
       </div>
     </HomeLayout>
