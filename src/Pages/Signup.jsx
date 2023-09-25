@@ -3,78 +3,118 @@ import HomeLayout from "../Layouts/HomeLayout";
 import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import createAccount from "../Redux/Slices/AuthSlice"
+
+
 
 function Signup() {
-const dispatch = useDispatch();
-const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-        // Local States
+  // Local States
   const [previewImage, setPreviewImage] = useState("");
-  const [signupData,setSignUpData]=useState({
+  const [signupData, setSignUpData] = useState({
     fullName: "",
     email: "",
     password: "",
-    avatar: ""
+    avatar: "",
   });
 
-
-        // Handle User Input(not image)
-  function handleUserInput(e){
-    const{name,value}=e.target;
+  // Handle User Input(not image)
+  function handleUserInput(e) {
+    const { name, value } = e.target;
     setSignUpData({
-        ...signupData,
-        [name]:value
-    })
+      ...signupData,
+      [name]: value,
+    });
   }
 
+  //      Handler for Profile Image
 
-//      Handler for Profile Image
-
-  function handleProfileImage(e){
+  function handleProfileImage(e) {
     e.preventDefault();
     // getting img
-    const uploadedImage=e.target.files[0];
-    if(uploadedImage){
-        setSignUpData({
-            ...signupData,
-            avatar : uploadedImage
-        })
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(uploadedImage);
-        fileReader.addEventListener("load",()=>{
-            setPreviewImage(fileReader.result);
-        })
+    const uploadedImage = e.target.files[0];
+    if (uploadedImage) {
+      setSignUpData({
+        ...signupData,
+        avatar: uploadedImage,
+      });
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(uploadedImage);
+      fileReader.addEventListener("load", () => {
+        setPreviewImage(fileReader.result);
+      });
     }
   }
 
-    // Function to create new UserAccount(Signup)
+  // Function to create new UserAccount(Signup)
 
-    function createNewUser(event){
-        let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        event.preventDefault();
-        if(!signupData.email || !signupData.password || !signupData.fullName || !signupData.avatar){
-            toast.error("Please fill all the details.")
-            return;
-        }
-        // Check length of name field
-        if(signupData.fullName.length<5){
-            toast.error("Full name should be of atleast of length five.")
-            return;
-        }
-        if(!signupData.email.match(mailformat)){
-            toast.error("Please enter a valid email");
-            return;
-        }
-
-
-
+  async function createNewUser(event) {
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let passwordFormat =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    event.preventDefault();
+    if (
+      !signupData.email ||
+      !signupData.password ||
+      !signupData.fullName ||
+      !signupData.avatar
+    ) {
+      toast.error("Please fill all the details.");
+      return;
+    }
+    // Check length of name field
+    if (signupData.fullName.length < 5) {
+      toast.error("Full name should be of atleast of length five.");
+      return;
     }
 
+    //email validation
+    if (!signupData.email.match(mailformat)) {
+      toast.error("Invalid Email");
+      return;
+    }
+
+    // Password validation
+    if (!signupData.password.match(passwordFormat)) {
+      toast.error(
+        "Password should be 6-16 characters long with atleast a number and a special character"
+      );
+      return;
+    }
+    // Form data to send over the server.
+    const formData = new FormData();
+    
+    formData.append("fullName", signupData.fullName);
+    formData.append("email", signupData.email);
+    formData.append("password", signupData.password);
+    formData.append("avatar", signupData.avatar);
+   
+
+    //Dispatch createAccount action
+    const response = await dispatch(createAccount(formData))
+    if(response.payload.success){
+      navigate("/");
+    }
+
+    navigate("/");
+    setSignUpData({
+      fullName: "",
+      email: "",
+      password: "",
+      avatar: "",
+    });
+    setPreviewImage("");
+    resetSignUpData();
 
 
+  }
 
+  // Reset SignUp for new user once user is created Successfully.
+  function resetSignUpData(){}
+  
 
   return (
     <HomeLayout>
@@ -87,7 +127,9 @@ const navigate=useNavigate();
         shadow-[0_0_10px_black]"
         >
           {/* REGISTERATION HEADING */}
-          <h1 className="text-center text-2xl font-bold text-yellow-100 m-auto" >Registeration Page</h1>
+          <h1 className="text-center text-2xl font-bold text-yellow-100 m-auto">
+            Registeration Page
+          </h1>
 
           {/* LABEL */}
           <label htmlFor="image_uploads" className="cursor-pointer">
@@ -111,8 +153,8 @@ const navigate=useNavigate();
             accept=".jpg , .jpeg , .png , .svg"
           />
 
-           {/* DIV FOR INPUT LABLES- Full-Name */}
-           <div className="flex flex-col gap-1">
+          {/* DIV FOR INPUT LABLES- Full-Name */}
+          <div className="flex flex-col gap-1">
             <label htmlFor="fullName" className="font-semibold">
               Full Name
             </label>
@@ -164,7 +206,7 @@ const navigate=useNavigate();
 
           {/* Button to create Account */}
           <button
-          type="submit"
+            type="submit"
             className="border rounded-full px-2 py-2 bg-yellow-600 mt-2
             hover:bg-yellow-500 transition-all ease-in-out duration-300 font-bold text-xl cursor-pointer
             
@@ -175,9 +217,14 @@ const navigate=useNavigate();
 
           {/* Para for already existing user */}
 
-          <p className="m-auto">Already have an account?
-          <Link className="px-2 text-yellow-300 link no-underline" 
-           to={'/login'}>Login</Link>
+          <p className="m-auto">
+            Already have an account?
+            <Link
+              className="px-2 text-yellow-300 link no-underline"
+              to={"/login"}
+            >
+              Login
+            </Link>
           </p>
         </form>
       </div>
