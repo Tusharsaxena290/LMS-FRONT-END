@@ -3,7 +3,9 @@ import { Routes,Route } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import AboutUs from './Pages/AboutUs'
 import NotFound from './Pages/NotFound'
-import Signup from './Pages/SignUp'
+import Signup  from './Pages/Signup'
+import Login from './Pages/Login'
+//import Login from "./pages/Login"
 
 function App() {
 
@@ -19,6 +21,9 @@ function App() {
     {/* SignUp */}
 
     <Route path='/signup' element={<Signup/>}></Route>
+
+  {/* Login */}
+  <Route path='/login' element={<Login/>}></Route>
 
     {/* unknown path */}
     <Route path='*' element={<NotFound></NotFound>}/>
