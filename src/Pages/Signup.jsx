@@ -4,7 +4,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import createAccount from "../Redux/Slices/AuthSlice"
+import {createAccount} from "../Redux/Slices/AuthSlice"
 
 
 
@@ -95,11 +95,11 @@ function Signup() {
 
     //Dispatch createAccount action
     const response = await dispatch(createAccount(formData))
-    if(response.payload.success){
+    if(response?.payload?.success){
       navigate("/");
     }
 
-    navigate("/");
+    
     setSignUpData({
       fullName: "",
       email: "",
@@ -107,13 +107,12 @@ function Signup() {
       avatar: "",
     });
     setPreviewImage("");
-    resetSignUpData();
+    
 
 
   }
 
-  // Reset SignUp for new user once user is created Successfully.
-  function resetSignUpData(){}
+  
   
 
   return (
