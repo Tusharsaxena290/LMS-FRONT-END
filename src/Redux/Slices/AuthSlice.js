@@ -87,6 +87,10 @@ const authSlice=createSlice({
 
 
         })
+        // .addCase(login.rejected,(state,action)=>{
+        //     localStorage.isLoggedIn=false;
+        //     state.isLoggedIn=false;
+        // })
         .addCase(logout.fulfilled,(state)=>{
            //clear localstorage
            localStorage.clear();
