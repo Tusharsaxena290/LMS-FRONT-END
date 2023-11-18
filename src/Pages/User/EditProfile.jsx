@@ -21,7 +21,7 @@ const [data,setData]=useState({
 });
 
 function handleImageUpload(evt){
-    effects.preventDefault();
+    evt.preventDefault();
     //uploaded image
     const uploadedImage=evt.target.files[0];
     if(uploadedImage){
